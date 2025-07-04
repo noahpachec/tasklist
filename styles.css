@@ -1,12 +1,31 @@
 
 :root {
+    /* background */
     --bg3: oklch(0.05 0.01 240);
-    --bg2: oklch(0.20 0.01 240);
-    --bg1: oklch(0.30 0.01 240);
-    --bord: oklch(0.40 0.01 240);
+    --bg2: oklch(0.18 0.01 240);
+    --bg1: oklch(0.22 0.01 240);
+    /* hoverbg */
+    --bg-1: oklch(0.26 0.01 240);
+    --bg-2: oklch(0.30 0.01 240);
+    --bg-3: oklch(0.34 0.01 240);
 
+
+    /* border */
+    --bord: oklch(0.28 0.01 240);
+    /* border radius control */
+    --bord-rad: 5px;
+    /* hoverborder */
+    --hvbord: oklch(0.34 0.01 240);
+
+    /* font */
     --fc1: oklch(0.95 0.01 240);
-    --fc2: oklch(0.9 0.01 240);
+    --fc2: oklch(0.85 0.01 240);
+    
+    /* button transitions */
+    --tr-time: 1s;
+
+    /* completed colors */
+    --comp2: hsl(43, 74%, 49%);
     
 }
 
@@ -17,31 +36,65 @@
     font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 16px;
     color: var(--fc1);
+    border: none;
 }
 
-
+.header {
+    margin: 25px;
+}
 
 .title {
     margin: 20px;
     text-align: center;
     font-size: 2rem;
-    background-color: var(--bg2);
+    background: linear-gradient(var(--bg1), var(--bg2));
     padding: 15px;
-    border-radius: 5px;
-    border-top: var(--bord);
+    border-radius: var(--bord-rad);
+    border-top: solid 2px var(--bord);
+}
+
+.inputbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
 }
 
 .task-input {
-    background-color: var(--bg2);
-    border: none;
+    background: linear-gradient(var(--bg1), var(--bg2));;
     color: var(--fc2);
     padding: 5px;
-    border-radius: 5px;
+    border-radius: var(--bord-rad);
+    border-top: solid 2px var(--bord);
+    font-size: 0.8rem;
+}
+
+.task-input::placeholder {
+    
+    color: var(--bg-3);
+    font-size: .8rem;
+
+}
+
+.submit-button {
+    background: linear-gradient(var(--bg1), var(--bg2));
+    border-top: solid 2px var(--bord);
+    padding: 5px;
+    border-radius: var(--bord-rad);
+    color: var(--fc2);
+    font-size:  .8rem;
+    margin-left: 10px;
+}
+
+.submit-button:hover {
+    background: linear-gradient(var(--bg-2), var(--bg-1));
+    border-top: solid 2px var(--hvbord);
+    cursor: pointer;
 }
 
 .tasks-box {
     display: flex;
-    justify-content: center;
+    justify-content: right;
     flex-direction: column;
     height: 600px;
     width: 1000px;
@@ -49,27 +102,41 @@
     border: 1px solid black;
 }
 
-.remButt, .comButt {
-    font-size: 5px;
-    width: 20px;
-    height: 20px;
+/* .remButt, .comButt { 
+    font-size: 10px;
+    width: 18px;
+    height: 18px;
     border: none;
-    border-radius: 100%;
+    border-radius: 0;
 }
-
+*/
+/*
 .remButt {
     background-color: rgb(255, 120, 120);
 }
-.comButt {
-    background-color: rgb(218, 255, 163);
+*/
+.incomButt, .commButt {
+    border-radius: 100%;
+    width: 18px;
+    height: 18px;
     
+}
+.commButt {
+    border: solid 2px var(--comp2);
+    background-color: var(--comp2);
+}
+
+.incomButt {
+    border: solid 2px var(--bg-2);
+    background-color: var(--bg3);
 }
 .incomplete {
     background-color: var(--bg1);
+
 }
 
 .completed {
-    background-color: goldenrod;
+    background-color: hsl(43, 74%, 49%);
 }
 
 body {
@@ -93,7 +160,8 @@ li {
     height: 2rem;
     align-items: left;
     justify-content: left;
-    border-radius: 10px;
+    border-radius: var(--bord-rad);
+    cursor: pointer;
 }
 
 .inp-sub {

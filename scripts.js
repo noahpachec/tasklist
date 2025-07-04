@@ -20,35 +20,37 @@ function createTask() {
         const li = document.createElement("li")
         li.setAttribute("draggable", true)
         li.textContent = text
-        document.getElementById("tasks").appendChild(li)
+        document.getElementById("active-tasks").appendChild(li)
         li.classList.add("task-items")
         li.classList.add("incomplete")
-        removeButton(li)
+        // removeButton(li)
         completedButton(li)
         addDragHandler(li)
         document.getElementById("input").value = ""
     }
 }
 
-function removeButton(li) {
-    const del = document.createElement("button")
-    del.classList.add("remButt")
-    del.textContent = "❌"
-    del.id = "del"
-    li.appendChild(del)
-    del.addEventListener("click", function () {
-        this.parentElement.remove()
-    })
-}
+// function removeButton(li) {
+//     const del = document.createElement("button")
+//     del.classList.add("remButt")
+//     del.textContent = "❌"
+//     del.id = "del"
+//     li.appendChild(del)
+//     del.addEventListener("click", function () {
+//         this.parentElement.remove()
+//     })
+
+// }
 
 function completedButton(li) {
-    const com = document.createElement("button")
-    com.classList.add("comButt")
-    com.textContent = "✔️"
+    const com = document.createElement("div")
+    com.classList.add("incomButt")
     li.appendChild(com)
     completeCount = 0;
     com.addEventListener("click", function () {
+        this.parentElement.classList.remove("incomButt")
         this.parentElement.classList.remove("incomplete")
+        this.parentElement.classList.add("commButt")
         this.parentElement.classList.add("completed")
         completeCount += 1;
         console.log(completeCount)
