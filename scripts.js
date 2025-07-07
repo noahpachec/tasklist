@@ -47,12 +47,47 @@ function completedButton(li) {
     com.classList.add("incomButt")
     li.appendChild(com)
     completeCount = 0;
-    com.addEventListener("click", function () {
-        this.parentElement.classList.remove("incomButt")
-        this.parentElement.classList.remove("incomplete")
-        this.parentElement.classList.add("commButt")
-        this.parentElement.classList.add("completed")
-        completeCount += 1;
-        console.log(completeCount)
-    })
-}
+    addEventListener("click", (event) => {
+        compToggle(li, com)})
+    }
+
+function compToggle(li, com) {
+    if (li.classList.contains("completed")) {
+        com.addEventListener("click", (event) => {
+            com.classList.remove("commButt")
+            com.parentElement.classList.remove("complete")
+            com.classList.add("incomButt")
+            com.parentElement.classList.add("incomplete")
+            completeCount -= 1;
+        })}
+    else {
+        com.addEventListener("click", (event) => {
+            com.classList.remove("incomButt")
+            this.parentElement.classList.remove("incomplete")
+            com.classList.add("commButt")
+            this.parentElement.classList.add("completed")
+            completeCount += 1;
+            console.log(completeCount)
+        })}
+    }
+    
+        
+    
+    
+    // com.addEventListener("click", function () {
+    //     com.classList.remove("incomButt")
+    //     this.parentElement.classList.remove("incomplete")
+    //     com.classList.add("commButt")
+    //     this.parentElement.classList.add("completed")
+    //     completeCount += 1;
+    //     console.log(completeCount)
+    //     com.addEventListener("click", function () {
+    //         if (com.classList.contains("commButt")) {
+    //             com.classList.remove("commButt")
+    //             com.parentElement.classList.remove("complete")
+    //             com.classList.add("incomButt")
+    //             com.parentElement.classList.add("incomplete")
+    //             completeCount -= 1;
+    //         }
+    //     })
+    // })
