@@ -23,71 +23,55 @@ function createTask() {
         document.getElementById("active-tasks").appendChild(li)
         li.classList.add("task-items")
         li.classList.add("incomplete")
-        // removeButton(li)
-        completedButton(li)
+        completeButton(li)
         addDragHandler(li)
-        document.getElementById("input").value = ""
+        document.getElementById("input").value = "";
+    }
+    else {
+        alert("Invalid task")
     }
 }
 
-// function removeButton(li) {
-//     const del = document.createElement("button")
-//     del.classList.add("remButt")
-//     del.textContent = "❌"
-//     del.id = "del"
-//     li.appendChild(del)
-//     del.addEventListener("click", function () {
-//         this.parentElement.remove()
-//     })
 
-// }
 
-function completedButton(li) {
-    const com = document.createElement("div")
+function completeButton(li) {
+    const com = document.createElement("button")
     com.classList.add("incomButt")
-    li.appendChild(com)
+    li.insertBefore(com, li.firstChild);
     completeCount = 0;
-    addEventListener("click", (event) => {
-        compToggle(li, com)})
+    compToggle(li, com);
     }
+
 
 function compToggle(li, com) {
-    if (li.classList.contains("completed")) {
-        com.addEventListener("click", (event) => {
-            com.classList.remove("commButt")
-            com.parentElement.classList.remove("complete")
-            com.classList.add("incomButt")
-            com.parentElement.classList.add("incomplete")
-            completeCount -= 1;
-        })}
-    else {
-        com.addEventListener("click", (event) => {
-            com.classList.remove("incomButt")
-            this.parentElement.classList.remove("incomplete")
-            com.classList.add("commButt")
-            this.parentElement.classList.add("completed")
-            completeCount += 1;
-            console.log(completeCount)
-        })}
+    com.addEventListener("click", function(event) {
+        if (li.classList.contains("complete")) {
+                com.classList.remove("commButt")
+                com.parentElement.classList.remove("complete")
+                com.classList.add("incomButt")
+                com.parentElement.classList.add("incomplete")
+            }
+        else if (li.classList.contains("incomplete")) {
+                com.classList.remove("incomButt")
+                com.parentElement.classList.remove("incomplete")
+                com.classList.add("commButt")
+                com.parentElement.classList.add("complete")
+                console.log(completeCount)
+            }
+        taskSort(li)
+    })
+    
+}
+
+function taskSort(li) {
+    const compTask = document.getElementById("complete-tasks")
+    const actTask = document.getElementById("active-tasks")
+    if (li.classList.contains("complete")) {
+        compTask.appendChild(li)
     }
+    else if (li.classList.contains("incomplete")) {
+        actTask.appendChild(li)
+    }
+}
     
         
-    
-    
-    // com.addEventListener("click", function () {
-    //     com.classList.remove("incomButt")
-    //     this.parentElement.classList.remove("incomplete")
-    //     com.classList.add("commButt")
-    //     this.parentElement.classList.add("completed")
-    //     completeCount += 1;
-    //     console.log(completeCount)
-    //     com.addEventListener("click", function () {
-    //         if (com.classList.contains("commButt")) {
-    //             com.classList.remove("commButt")
-    //             com.parentElement.classList.remove("complete")
-    //             com.classList.add("incomButt")
-    //             com.parentElement.classList.add("incomplete")
-    //             completeCount -= 1;
-    //         }
-    //     })
-    // })
